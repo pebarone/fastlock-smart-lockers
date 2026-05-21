@@ -2,12 +2,12 @@ import fastifyStatic from "@fastify/static";
 import type { FastifyInstance } from "fastify";
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { env } from "../config/env";
+import { resolveFromBackendRoot } from "../config/runtime-paths";
 
 const frontendRoots = [
-  fileURLToPath(new URL("../../public", import.meta.url)),
-  fileURLToPath(new URL("../../../frontend/dist", import.meta.url))
+  resolveFromBackendRoot("public"),
+  resolveFromBackendRoot("../frontend/dist")
 ];
 
 function shouldServeSpa(pathname: string): boolean {

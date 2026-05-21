@@ -1,6 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolveFromBackendRoot } from "./runtime-paths";
 
 const DEFAULT_PORT = 3333;
 
@@ -52,11 +51,9 @@ function normalizeWebAuthnRpId(value: string): string {
 }
 
 function loadLocalEnvFiles() {
-  const configDir = dirname(fileURLToPath(import.meta.url));
-  const backendRoot = resolve(configDir, "../..");
   const envFiles = [
-    resolve(backendRoot, ".env.local"),
-    resolve(backendRoot, ".env")
+    resolveFromBackendRoot(".env.local"),
+    resolveFromBackendRoot(".env")
   ];
 
   for (const envFilePath of envFiles) {

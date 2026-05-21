@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "docker-best-practices": {
+      "source": "rohitg00/awesome-claude-code-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/docker-best-practices/SKILL.md",
+      "computedHash": "b0520ac4e8f5614998cd36590633d04714dd15e756f667c49c86a977cbfdd2ea"
+    },
     "vercel-composition-patterns": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",

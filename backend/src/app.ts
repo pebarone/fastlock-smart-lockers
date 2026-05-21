@@ -4,8 +4,8 @@ import rateLimit from "@fastify/rate-limit";
 import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import Fastify from "fastify";
-import { fileURLToPath } from "node:url";
 import { env, parseCorsOrigin } from "./config/env";
+import { getBackendRoot } from "./config/runtime-paths";
 import { handleFastifyError } from "./errors";
 import { registerFrontend } from "./http/register-frontend";
 import { dashboardRoutes } from "./modules/dashboard/dashboard.routes";
@@ -41,7 +41,6 @@ function asDirectiveArray(
 }
 
 export async function buildApp() {
-  const openApiBaseDir = fileURLToPath(new URL("..", import.meta.url));
   const supabaseOrigin = resolveOrigin(env.SUPABASE_URL);
   const supabaseWssOrigin = supabaseOrigin?.startsWith("https://")
     ? `wss://${new URL(supabaseOrigin).host}`
@@ -86,7 +85,7 @@ export async function buildApp() {
     mode: "static",
     specification: {
       path: "openapi.yaml",
-      baseDir: openApiBaseDir
+      baseDir: getBackendRoot()
     }
   });
 

@@ -4,6 +4,7 @@ node_modules/
 *.log
 dist/
 client_secret_221465022606-h82caf46f66v5281o2jpqebhdevm875v.apps.googleusercontent.com.json
+supabase.info.txt
 wokwi/build
 wokwi/.buildsrc
 wokwi/compile_tmp
