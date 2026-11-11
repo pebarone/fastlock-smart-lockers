@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔐 FastLock
+# FastLock
 
 **Self-service smart lockers: rent with a QR code, lock with your fingerprint, pay with PIX.**
 
@@ -19,37 +19,37 @@
 
 ---
 
-## ✨ Overview
+## Overview
 
 FastLock is a full-stack prototype of a **smart locker rental network**. A user finds a locker on the map (or scans the QR code stuck to it), picks a size, confirms an activation fee via PIX and registers a **WebAuthn passkey** (Face ID / Touch ID / fingerprint). To get their items back they authenticate again with the same biometrics, the system charges the extra time per started hour, and the locker is released.
 
 Partners (companies that host lockers) get a **multi-tenant portal** to manage locations, lockers, team members and an audit trail. An **ESP32 firmware simulated on Wokwi** polls the API and drives servo locks, LEDs and LCD displays, closing the loop between software and hardware.
 
-## 🚀 Features
+## Features
 
 **Customer flow**
-- 🗺️ Interactive locker map (Leaflet) with geocoding and distance to nearby locations
-- 📱 QR-code entry per locker (`/locker/:lockerId`) and guided rental flow
-- 🧬 Passwordless lock/unlock with **WebAuthn** (`@simplewebauthn`) passkeys bound to each rental
-- 💸 Rental states for activation payment and final retrieval payment (PIX), with hourly pricing
-- 🔑 Google OAuth sign-in via Supabase Auth and an account area
+- Interactive locker map (Leaflet) with geocoding and distance to nearby locations
+- QR-code entry per locker (`/locker/:lockerId`) and guided rental flow
+- Passwordless lock/unlock with **WebAuthn** (`@simplewebauthn`) passkeys bound to each rental
+- Rental states for activation payment and final retrieval payment (PIX), with hourly pricing
+- Google OAuth sign-in via Supabase Auth and an account area
 
 **Partner portal (multi-tenant)**
-- 🏢 Organizations with `owner` / `admin` / `viewer` roles and email-based pending invitations
-- 📍 Locker locations and lockers CRUD, status (`free`, `occupied`, `maintenance`) and size filters
-- 📊 Per-organization dashboard plus a platform-wide admin dashboard
-- 🧾 Audit log for every relevant write and every unlock attempt, plus manual override release
+- Organizations with `owner` / `admin` / `viewer` roles and email-based pending invitations
+- Locker locations and lockers CRUD, status (`free`, `occupied`, `maintenance`) and size filters
+- Per-organization dashboard plus a platform-wide admin dashboard
+- Audit log for every relevant write and every unlock attempt, plus manual override release
 
 **Platform**
-- 🛡️ Postgres **Row Level Security** policies per tenant, `helmet` security headers and rate limiting
-- 📜 OpenAPI spec with Swagger UI at `/api-docs`
-- 🗃️ Versioned plain-SQL migrations (no ORM) and seed scripts
-- 🐳 Single multi-stage Docker image that builds the Vue SPA and serves it from the Fastify API
-- ☁️ PowerShell script to type-check, build, push to Docker Hub and roll out to Azure Container Apps
-- 🔌 ESP32 + servo + LCD1602 + LED firmware on Wokwi talking to the live API
-- 🧊 3D viewer of the locker model (`3dmodel/model.html`)
+- Postgres **Row Level Security** policies per tenant, `helmet` security headers and rate limiting
+- OpenAPI spec with Swagger UI at `/api-docs`
+- Versioned plain-SQL migrations (no ORM) and seed scripts
+- Single multi-stage Docker image that builds the Vue SPA and serves it from the Fastify API
+- PowerShell script to type-check, build, push to Docker Hub and roll out to Azure Container Apps
+- ESP32 + servo + LCD1602 + LED firmware on Wokwi talking to the live API
+- 3D viewer of the locker model (`3dmodel/model.html`)
 
-## 🧱 Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 | --- | --- |
@@ -60,7 +60,7 @@ Partners (companies that host lockers) get a **multi-tenant portal** to manage l
 | DevOps | Docker (multi-stage), Docker Compose, Docker Hub, Azure Container Apps |
 | IoT | ESP32 (Arduino), ArduinoJson, ESP32Servo, LiquidCrystal I2C, Wokwi |
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```text
 .
@@ -79,7 +79,7 @@ Partners (companies that host lockers) get a **multi-tenant portal** to manage l
 
 Each backend module follows `routes → controller → service → repository → schemas`, keeping HTTP, business rules (transactions + auditing) and SQL apart.
 
-## ⚙️ Getting Started
+## Getting Started
 
 **Requirements:** [Bun](https://bun.sh) 1.x and a PostgreSQL database (a Supabase project for auth).
 
@@ -124,6 +124,6 @@ Health check: `curl http://localhost:3333/api/health`
 
 More backend details (tenant model, admin assignment, API list) are in [`backend/README.md`](backend/README.md) (Portuguese).
 
-## 🎓 Academic Context
+## Academic Context
 
 Built as the **Startup One** prototype during the Software Engineering program at **[FIAP](https://www.fiap.com.br/)**.
